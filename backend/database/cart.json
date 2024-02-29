@@ -1,0 +1,10 @@
+[
+    {
+        "id": 1,
+        "type": "laptop",
+        "productName": "Microsoft Surface Laptop 4",
+        "price": 1299.99,
+        "imgSrc": "https://imagedelivery.net/pjXEwQ5mgCM0WtJa4WheRQ/dcc81457-fdd9-44ac-bd00-fcad56a9d900/ProductViewPop",
+        "quantity": 1
+        }
+]
