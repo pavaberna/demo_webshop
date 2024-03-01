@@ -34,10 +34,10 @@ type Product = z.infer<typeof ProductSchema>
 type Cart = z.infer<typeof CartSchema>
 
 
-const readfile = async<Type>(database: string) => {
+const readfile = async(database: string) => {
     try {
         const rawData = await filesystem.readFile(`${__dirname}/../${database}`, "utf-8");
-        const products: Type[] = JSON.parse(rawData)
+        const products:Product[] = JSON.parse(rawData)
         console.log(products)
         return products
     } catch (error) {
@@ -87,7 +87,7 @@ server.get("/products/all/filter", async (req, res) => {
 
 server.get("/products/:type", async (req, res) => {
     const type = req.params.type
-    const products: Product[] | null = await readfile("database/products.json")
+    const products = await readfile("database/products.json")
     if (!products)
         return res.sendStatus(500)
 
@@ -101,7 +101,7 @@ server.get("/cart", async (req, res) => {
 })
 
 //POST requests
-server.post("/products/all", async (req, res) => {
+/* server.post("/products/all", async (req, res) => {
     const result = CartSchema.safeParse(req.body)
     if (!result.success)
         return res.status(400).json(result.error.issues)
@@ -122,9 +122,9 @@ server.post("/products/all", async (req, res) => {
     if (!isSuccessful) return res.sendStatus(500)
 
     res.json({ ...cartData })
-})
+}) */
 
-server.post("/cart", async (req, res) => {
+/* server.post("/cart", async (req, res) => {
     const result = CartSchema.safeParse(req.body)
     if (!result.success) {
         return res.status(400).json(result.error.issues)
@@ -138,9 +138,9 @@ server.post("/cart", async (req, res) => {
     if (!isSuccessful) return res.sendStatus(500)
 
     res.json("Rendelés leadva")
-})
+}) */
 
-server.post("/cart/order", async (req, res) => {
+/* server.post("/cart/order", async (req, res) => {
     const result = CartSchema.safeParse(req.body)
     if (!result.success) return res.status(400).json(result.error.issues)
 
@@ -154,10 +154,10 @@ server.post("/cart/order", async (req, res) => {
     if (!isSuccessful) return res.sendStatus(500)
 
     res.json({ id: randomOrderNumber })
-})
+}) */
 
 // DELETE requests
-server.delete("/cart/:id", async (req, res) => {
+/* server.delete("/cart/:id", async (req, res) => {
     const result = z.coerce.number().safeParse(req.params.id)
     if (!result.success) return res.status(400).json(result.error.issues)
     const id = result.data
@@ -172,7 +172,7 @@ server.delete("/cart/:id", async (req, res) => {
     if (!isSuccessful) return res.sendStatus(500)
 
     res.sendStatus(200)
-})
+}) */
 
 server.delete("/editor/products/:id", async (req, res) => {
     const result = z.coerce.number().safeParse(req.params.id)

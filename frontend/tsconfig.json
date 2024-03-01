@@ -9,18 +9,6 @@
     "target": "es5",
     "allowJs": true,
     "moduleResolution": "node",
-
-    /* Bundler mode */
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
   },
   "include": ["src/**/*.ts*"],
   "exclude": ["node_modules", "dist", "lib"]
